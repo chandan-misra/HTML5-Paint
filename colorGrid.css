@@ -1,0 +1,88 @@
+table{
+	border: 1px solid gray;
+}
+
+td{
+	width: 25px;
+	height: 25px;
+}
+
+#black{
+	background-color: black;
+}
+
+#gray50{
+	background-color: rgb(127,127,127);
+}
+
+td#darkRed{
+	background-color: rgb(136,0,21);
+}
+
+td#red{
+	background-color: rgb(237,28,36);
+}
+
+td#orange{
+	background-color: rgb(255,127,39);
+}
+
+td#yellow{
+	background-color: rgb(255,242,0);
+}
+
+td#green{
+	background-color: rgb(34,177,76);
+}
+
+td#turquoise{
+	background-color: rgb(0,162,232);
+}
+
+td#indigo{
+	background-color: rgb(63,72,204);
+}
+
+td#purple{
+	background-color: rgb(163,73,164);
+}
+
+td#white{
+	background-color: white;
+}
+
+td#gray25{
+	background-color: rgb(195,195,195);
+}
+
+td#brown{
+	background-color: rgb(185,122,87);
+}
+
+td#rose{
+	background-color: rgb(255,174,201);
+}
+
+td#gold{
+	background-color: rgb(255,201,14);
+}
+
+td#lightYellow{
+	background-color: rgb(239,228,176);
+}
+
+td#lime{
+	background-color: rgb(181,230,29);
+}
+
+td#lightTurquoise{
+	background-color: rgb(153,217,234);
+}
+
+td#blueGray{
+	background-color: rgb(112,146,190);
+}
+
+td#lavender{
+	background-color: rgb(200,191,231);
+}

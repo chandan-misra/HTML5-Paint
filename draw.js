@@ -7,11 +7,61 @@ function init(){
 	document.getElementsByTagName("table")[0].addEventListener("click", getTarget);
 	var canvas = document.getElementById("drawingCanvas");	
 	canvas.onclick = function(){draw(canvas, event)};
-	canvas.ondrag = function(){drawLine(canvas, event)};
+	canvas.ondrag = function(){dragging(canvas,event)};
+	canvas.ondragstart = function(){dragStart(canvas,event)};
+	canvas.ondragover = function(){allowDrop(canvas,event)};
+	
+}
+
+function dragStart(canvas,event) {
+	console.log("on drag start");
+	event.dataTransfer.setData("Text", "");
+	var element = document.getElementById(id);
+	var color = getComputedStyle(element).backgroundColor;
+	var rect = canvas.getBoundingClientRect();
+	var x = event.clientX - rect.x;
+	var y = event.clientY - rect.y;
+	var context = canvas.getContext("2d");
+	context.beginPath();
+	context.arc(x, y, 3, 0, degreesToRadians(360), true);
+	context.fillStyle = color;
+	context.fill();
+}
+
+function degreesToRadians(degrees) {
+	return (degrees * Math.PI)/180;
+}
+
+function dragging(canvas,event) {
+	console.log("on drag");
+	var element = document.getElementById(id);
+	var color = getComputedStyle(element).backgroundColor;
+	var rect = canvas.getBoundingClientRect();
+	var x = event.clientX - rect.x;
+	var y = event.clientY - rect.y;
+	var context = canvas.getContext("2d");
+	context.beginPath();
+	context.arc(x, y, 3, 0, degreesToRadians(360), true);
+	context.fillStyle = color;
+	context.fill();
+}
+
+function allowDrop(canvas,event) {
+	console.log("on drag over");
+	var element = document.getElementById(id);
+	var color = getComputedStyle(element).backgroundColor;
+	var rect = canvas.getBoundingClientRect();
+	var x = event.clientX - rect.x;
+	var y = event.clientY - rect.y;
+	var context = canvas.getContext("2d");
+	context.beginPath();
+	context.arc(x, y, 3, 0, degreesToRadians(360), true);
+	context.fillStyle = color;
+	context.fill();
 }
 
 function draw(canvas, event){
-	//alert("canvas has been clicked");	
+	console.log("click event occurred");
 	if(id != ""){
 		var element = document.getElementById(id);
 		var color = getComputedStyle(element).backgroundColor;
@@ -31,15 +81,19 @@ function draw(canvas, event){
 }
 
 function drawLine(canvas, event){
-	var element = document.getElementById(id);
-	var color = getComputedStyle(element).backgroundColor;
-	var rect = canvas.getBoundingClientRect();
-	var x = event.clientX - rect.x;
-	var y = event.clientY - rect.y;	
+	event.dataTransfer.setData("Text", "");
+	console.log("drag event occurred");
+	if(id!=""){
+		var element = document.getElementById(id);
+		var color = getComputedStyle(element).backgroundColor;
+		var rect = canvas.getBoundingClientRect();
+		var x = event.clientX - rect.x;
+		var y = event.clientY - rect.y;	
 	
-	var context = canvas.getContext("2d");
-	context.fillStyle = color;
-	context.fillRect(x, y, 5, 5);
+		var context = canvas.getContext("2d");
+		context.fillStyle = color;
+		context.fillRect(x, y, 5, 5);
+	}	
 }
 
 function getTarget(){	
